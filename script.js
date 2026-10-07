@@ -68,3 +68,12 @@ musicToggle.addEventListener('click', ()=>{
 });
 
 createSparkles();
+
+// Keep the invitation inside the actually visible phone viewport.
+// This avoids cropping caused by Safari/Chrome address bars on smaller phones.
+function syncRealViewportHeight(){
+  document.documentElement.style.setProperty('--real-vh', `${window.innerHeight * 0.01}px`);
+}
+syncRealViewportHeight();
+window.addEventListener('resize', syncRealViewportHeight, {passive:true});
+window.addEventListener('orientationchange', ()=>setTimeout(syncRealViewportHeight, 120), {passive:true});

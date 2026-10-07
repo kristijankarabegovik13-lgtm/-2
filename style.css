@@ -192,3 +192,74 @@ h1 span{font-family:"Great Vibes",cursive;color:#9d7b3d;font-weight:400}
   .tap-text{bottom:55px;font-size:13px}
   .open-button{bottom:100px}
 }
+
+/* ===== Mobile-first viewport fit fixes ===== */
+html,body{height:100%;min-height:100%;overflow:hidden}
+.scene{
+  height:100svh;
+  min-height:100svh;
+  padding:max(10px,env(safe-area-inset-top)) 10px max(54px,calc(env(safe-area-inset-bottom) + 44px));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.invitation-shell{
+  width:min(92vw,calc(82svh * .64),400px);
+  max-width:400px;
+  max-height:82svh;
+  aspect-ratio:.64;
+  flex:0 0 auto;
+}
+.content{inset:72px 24px 24px}
+.eyebrow{font-size:11px;margin-bottom:10px}
+.intro{font-size:clamp(11.5px,3.2vw,14px);line-height:1.25;margin-bottom:10px}
+h1{font-size:clamp(30px,8vw,43px);margin-bottom:9px}
+.copy{font-size:clamp(11.5px,3.2vw,14px);line-height:1.22;margin-bottom:7px}
+.divider{margin:8px 0 10px}
+.details{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:10px}
+.detail-item{padding:8px 4px;border-radius:12px;min-width:0}
+.label{font-size:8.5px;letter-spacing:.1em;white-space:nowrap}
+.value{font-size:clamp(12px,3.7vw,16px);line-height:1.05;overflow-wrap:anywhere}
+.closing{font-size:clamp(11px,3vw,14px);line-height:1.15}
+.closing strong{font-size:clamp(15px,4.4vw,20px);margin-top:3px}
+.top-ornament{top:27px}
+.initials{font-size:31px}
+.monogram-ring{width:112px;height:112px}
+.monogram{font-size:48px}
+.tap-text{bottom:46px;font-size:12px}
+.open-button{bottom:90px;padding:9px 20px}
+.button-script{font-size:21px}
+
+@media (max-height:700px){
+  .scene{padding-top:8px;padding-bottom:max(46px,calc(env(safe-area-inset-bottom) + 38px))}
+  .invitation-shell{width:min(88vw,calc(79svh * .64),370px);max-height:79svh}
+  .content{inset:62px 20px 20px}
+  .top-ornament{top:22px}
+  .initials{font-size:27px}
+  .eyebrow{font-size:9px;margin-bottom:7px}
+  .intro{font-size:10.5px;margin-bottom:7px}
+  h1{font-size:clamp(27px,7.5vw,35px);margin-bottom:6px}
+  .copy{font-size:10.5px;margin-bottom:5px}
+  .divider{margin:5px 0 7px}
+  .details{gap:4px;margin-bottom:7px}
+  .detail-item{padding:6px 3px}
+  .label{font-size:7.5px}
+  .value{font-size:11.5px}
+  .closing{font-size:10px}
+  .closing strong{font-size:14px}
+  .tap-text{bottom:36px;font-size:10.5px}
+  .open-button{bottom:72px;padding:7px 17px}
+  .button-script{font-size:19px}
+}
+
+@media (orientation:landscape) and (max-height:520px){
+  .scene{overflow:auto;align-items:flex-start;padding-top:14px;padding-bottom:14px}
+  .invitation-shell{width:min(56vw,calc(92svh * .64),360px);max-height:none}
+}
+
+/* Actual mobile viewport height (set by JS) */
+:root{--real-vh:1vh}
+.scene{
+  height:calc(var(--real-vh) * 100);
+  min-height:calc(var(--real-vh) * 100);
+}
